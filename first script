@@ -1,0 +1,9 @@
+"# Define the file path and size
+$filePath = ""C:\temp\1GBfile.txt""
+$fileSize = 1GB
+ 
+# Create a 1 GB file
+$buffer = New-Object byte[] $fileSize
+[System.IO.File]::WriteAllBytes($filePath, $buffer)
+ 
+Write-Output ""1 GB file created at $filePath"""""	 
