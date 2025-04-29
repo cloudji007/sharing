@@ -1,0 +1,17 @@
+# Define the source file and the destination folder
+$sourceFile = "C:\path\to\your\file.txt"
+$destinationFolder = "C:\path\to\your\folder"
+$numberOfCopies = 5  # Specify the number of copies you want
+ 
+# Get the base name and extension of the source file
+$baseName = [System.IO.Path]::GetFileNameWithoutExtension($sourceFile)
+$extension = [System.IO.Path]::GetExtension($sourceFile)
+ 
+# Loop to create the specified number of copies
+for ($i = 1; $i -le $numberOfCopies; $i++) {
+    $newFileName = "$baseName`_$i$extension"
+    $newFilePath = Join-Path -Path $destinationFolder -ChildPath $newFileName
+    Copy-Item -Path $sourceFile -Destination $newFilePath
+}
+ 
+Write-Output "Copied $numberOfCopies files to $destinationFolder"
